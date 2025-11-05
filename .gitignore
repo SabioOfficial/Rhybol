@@ -1,0 +1,9 @@
+# no storing python cache >:(
+__pycache__/
+*.pyc
+
+# vscode folder begone
+.vscode/
+
+# incase there's an env you know (i do this on all of my projects just in case lmao)
+.env
