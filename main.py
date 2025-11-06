@@ -43,20 +43,31 @@ def show_cursor():
 def get_term_size():
     return shutil.get_terminal_size(fallback=(80, 24))
 
+def draw_static_lane(rows=12): # idk what i should name this?
+    cols, term_rows = get_term_size()
+    clear_screen()
+    print("rhybol - v0.1 (dev) - game(not) - press q to quit")
+    print("-" * 40) # top 10 python moments
+    for r in range(rows):
+        if r >= rows- 2:
+            print("|                                      | =")
+        else:
+            print("|                                      |")
+    print("-" * 40)
+    sys.stdout.flush()
+
 def main():
     start_input_thread()
-    clear_screen()
     hide_cursor()
     print("game running. press q to quit?")
     try:
         while True:
+            draw_static_lane(rows=12)
             while not KEY_Q.empty():
                 k = KEY_Q.get()
                 if k in ("q", "Q"):
                     return
-            time.sleep(0.05)
-    except KeyboardInterrupt:
-        pass
+            time.sleep(0.2)
     finally:
         show_cursor()
         clear_screen()
